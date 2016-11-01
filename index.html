@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Electro Manager</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel='stylesheet' href='bower_components/tether/dist/css/tether.min.css'>
+	<link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='bower_components/font-awesome/css/font-awesome.min.css'>
+	<link rel='stylesheet' href='bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css'>
+	
+	<link rel='stylesheet' href='styles/alerts.css'>
+	<link rel='stylesheet' href='styles/styles.css'>
+	
+	<script src='bower_components/jquery/dist/jquery.min.js'></script>
+	<script src='bower_components/tether/dist/js/tether.min.js'></script>
+	<script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+	<script src='bower_components/angular/angular.min.js'></script>
+	<script src='bower_components/angular-resource/angular-resource.min.js'></script>
+	<script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
+</head>
+<body ng-app="electroManagerApp">
+	<script src='scripts/app.js'></script>
+	<script src='scripts/directives.js'></script>
+	<script src='scripts/routes.js'></script>
+	<script src='scripts/utils.js'></script>
+	
+	<script src='scripts/controllers/alert.controller.js'></script>
+	<script src='scripts/controllers/navbar.controller.js'></script>
+	<script src='scripts/controllers/inicio.controller.js'></script>
+	<script src='scripts/controllers/categorias.controller.js'></script>
+	
+	<script src='scripts/services/alert.service.js'></script>
+	<script src='scripts/services/date-util.service.js'></script>
+	<script src='scripts/services/categoria.service.js'></script>
+	
+	<div class="container" style="background-color: white;border: thin #D5D5D5 solid;min-height: 800px;padding:0px">
+		<div ui-view="navbar" ng-cloak=""></div>
+		<div ui-view="content" style="padding:10px"></div>
+		<div ui-view="alert" ng-cloak=""></div>
+	</div>
+</body>
+</html>

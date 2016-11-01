@@ -1,0 +1,39 @@
+<div class="row">
+	<h2 class="col-xs-12">Categorias</h2>
+	<div class="col-xs-12" style="margin:25px">
+		<button class="btn btn-lg btn-success" ng-click="guardarCambios()">Guardar Cambios</button>
+	</div>
+	<div class="col-xs-5">
+		<table>
+			<tr>
+			<td>Filtrar:<input type="text" ng-model="filtroNombre" style="width:150px"/></td>
+			<td>&nbsp;&nbsp;Nivel:<input type="number" style="width:60px" ng-model="filtroNivel" /></td>
+			<td>Negocio:<select ng-options="negocio as negocio.nombre for negocio in negocios track by negocio.id" 
+				ng-model="filtroNegocio" ></select></td>
+			<td>&nbsp;&nbsp;Todas:<input type="checkbox" style="width:60px" ng-model="filtroTodas" /></td>
+			</tr>
+		</table>
+		<div ng-repeat="categoria in categorias | filter:getFiltro() 
+			| orderBy:'nombreCompleto' " ng-style="getStyleByNegocio(categoria.negocio)">
+			<div style="display:inline;">{{categoria.nombreCompleto}} ({{categoria.negocioNombre}})</div> 
+			<div style="display:inline;">
+				<a ng-href="{{categoria.url}}" target="_blank" class="btn btn-sm btn-secondary"><span class="fa fa-link"></span></a>
+				<button class="btn btn-secondary btn-sm" ng-click="agregarCategoria(categoria)"><span class="fa fa-arrow-right"></span></button>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-2">
+	</div>
+	<div class="col-xs-5">
+		<select ng-model="catGeneral" style="font-size:9pt" 
+			ng-options="categoria as categoria.nombreCompleto for categoria in catsGenerales | orderBy: 'nombreCompleto' track by categoria.id"></select>
+		<div ng-repeat="categoria in catGeneral.categorias | orderBy:'nombreCompleto' " 
+			ng-style="getStyleByNegocio(categoria.negocio)" >
+			<div style="display: inline">{{categoria.nombreCompleto}} ({{categoria.negocioNombre}})</div>
+			<a ng-href="{{categoria.url}}" target="_blank" class="btn btn-sm btn-secondary"><span class="fa fa-link"></span></a> 
+			<button class="btn btn-danger btn-sm" ng-click="quitarCategoria(categoria)"><span class="fa fa-trash"></span></button>
+		</div>
+	</div>
+	
+	
+</div>
